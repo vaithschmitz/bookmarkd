@@ -1,9 +1,14 @@
+require 'pg'
+
+# end
+
 class Bookmarks
-  def self.all
-    [
-      "http://www.makersacademy.com",
-      "http://www.destroyallsoftware.com",
-      "http://www.google.com"
-     ]
+
+  def self.all 
+    begin
+      con = PG.connect :dbname => 'bookmark_manager' # connect to db
+      rs = con.exec "SELECT * FROM bookmarks" # run SQL input and assign to var
+    end
   end
 end
+

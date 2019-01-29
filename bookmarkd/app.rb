@@ -1,4 +1,5 @@
 require "sinatra/base"
+require_relative "lib/bookmarks"
 
 class Bookmarkd < Sinatra::Base
 enable :sessions
