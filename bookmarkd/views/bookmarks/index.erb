@@ -1,1 +1,10 @@
-<%@bookmarks.each{|x|%><%=x%><br><%}%>
+<h2> Bookmarks </h2>
+<ul><%@bookmarks.each{|x|%><li><a href="<%=x%>"><%=x%></a></li><br><%}%></ul>
+
+<div><p>Add Your Own Bookmark</p>
+<br>
+<form action="/addbm" method="post">
+	<input type="text" name="link" >
+  <input type="submit" name="submit" value="submit">
+</form>
+</div>

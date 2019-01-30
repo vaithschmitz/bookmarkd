@@ -1,5 +1,5 @@
 require 'bookmarks'
-describe '.all' do
+describe '.fetch_all' do
   it 'returns a list of bookmarks' do
     connection = PG.connect(dbname: 'bookmark_manager_test')
 
@@ -8,7 +8,7 @@ describe '.all' do
     connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.destroyallsoftware.com');")
     connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.google.com');")
 
-    bookmarks = Bookmarks.all
+    bookmarks = Bookmarks.fetch_all
 
     expect(bookmarks).to include('http://www.makersacademy.com')
     expect(bookmarks).to include('http://www.destroyallsoftware.com')
