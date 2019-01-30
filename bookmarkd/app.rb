@@ -4,6 +4,7 @@ require_relative "lib/bookmarks"
 class Bookmarkd < Sinatra::Base
 enable :sessions
 
+
 get '/' do
   erb(:index)
 end

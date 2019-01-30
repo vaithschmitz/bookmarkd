@@ -1,15 +1,25 @@
-ENV['RACK_ENV'] = 'test'
-
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
+require_relative './db_helper'
+require 'pg'
+
+ENV['RACK_ENV'] = 'test'
 
 Capybara.app = Bookmarkd
+
+RSpec.configure do |config|
+  config.before(:each) do
+    db_helper
+  end
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
